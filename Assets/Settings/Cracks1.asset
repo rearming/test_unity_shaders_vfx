@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cf0fcce0065cf40a5e10e5d602e64f, type: 3}
   m_Name: Cracks1
   m_EditorClassIdentifier: 
-  appearSpeed: 1
-  disappearSpeed: 2
-  timeToDisappear: 3
+  appearSpeed: 2
+  disappearSpeed: 4
+  timeToDisappear: 6
