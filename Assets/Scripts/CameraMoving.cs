@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 
+namespace MyNamespace
+{
+    
+}
+
 [SelectionBase]
 public class CameraMoving : MonoBehaviour
 {
