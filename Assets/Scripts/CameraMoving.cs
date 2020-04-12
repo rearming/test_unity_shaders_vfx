@@ -43,7 +43,7 @@ public class CameraMoving : MonoBehaviour
     {
         var moveForward = _transform.forward;
         var moveSide = _transform.right;
-        var moveVertical = _transform.up;
+        var moveVertical = Vector3.up;
         
         moveForward *= Time.deltaTime * moveSpeed * Input.GetAxis("Vertical");
         moveSide *= Time.deltaTime * moveSpeed * Input.GetAxis("Horizontal");
