@@ -8,7 +8,7 @@ public class CracksPlacer : MonoBehaviour
     
     public void Place(Vector3 position)
     {
-        var crack = ObjectPool.Instance.GetGameObjectFromPool(crackPrefab);
+        var crack = ObjectPool.Instance.Get(crackPrefab);
         crack.transform.position = position + Vector3.up * 0.01f;
     }
 }

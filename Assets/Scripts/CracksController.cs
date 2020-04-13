@@ -7,8 +7,7 @@ using UnityEngine;
 public class CracksController : MonoBehaviour
 {
 	[SerializeField] private CracksSettings settings;
-	[SerializeField] private KeyCode activationKey;
-	private Animator animator = null;
+	private Animator animator;
 	private bool appeared;
 	
 	private void Start()
@@ -17,6 +16,8 @@ public class CracksController : MonoBehaviour
 		animator.SetFloat("Appear Speed", 1 / settings.AppearSpeed);
 		animator.SetFloat("Disappear Speed", 1 / settings.DisappearSpeed);
 		Appear();
+		
+		
 	}
 
 	private void OnEnable()
@@ -35,6 +36,7 @@ public class CracksController : MonoBehaviour
 	{
 		yield return new WaitForSeconds(settings.TimeToDisappear);
 		animator.SetBool("Appear", false);
-		ObjectPool.Instance.ReturnGameObjectToPool(gameObject);
+		yield return new WaitForSeconds(settings.DisappearSpeed);
+		ObjectPool.Instance.Release(gameObject);
 	}
 }

@@ -17,45 +17,62 @@ public class CameraMoving : MonoBehaviour
     [SerializeField] private float rotateSensVert;
     [SerializeField] private float maxVertAngle = 60.0f;
 
-    private Transform _transform;
+    private Transform cachedTransform;
+
+    private FloatingJoystick joystick; 
 
     void Start()
     {
-        _transform = transform;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        joystick = FindObjectOfType<FloatingJoystick>();
+        cachedTransform = transform;
+        // Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
     }
     
     void Update()
     {
-        _transform.position += GetMovementVector();
-        _transform.localEulerAngles = GetRotation();
+        cachedTransform.position += GetMovementVector();
+        cachedTransform.localEulerAngles = GetRotation();
     }
 
     private Vector3 GetRotation()
     {
-        var cameraRotation = _transform.localEulerAngles;
+        var cameraRotation = cachedTransform.localEulerAngles;
         var rotation = cameraRotation;
 
-        rotation.x -= Input.GetAxis("Mouse Y") * rotateSensVert; // vertical
+        rotation.x -= Input.GetAxis("Vertical") * rotateSensVert; // vertical
         rotation.x = rotation.x > 180 ? rotation.x - 360 : rotation.x;
         rotation.x = Mathf.Clamp(rotation.x, -maxVertAngle, maxVertAngle);
-        rotation.y += Input.GetAxis("Mouse X") * rotateSensHoriz; // horizontal
+        rotation.y += Input.GetAxis("Horizontal") * rotateSensHoriz; // horizontal
         return rotation;
     }
 
     private Vector3 GetMovementVector()
     {
-        var moveForward = _transform.forward;
-        var moveSide = _transform.right;
+        var moveForward = cachedTransform.forward;
+        var moveSide = cachedTransform.right;
         var moveVertical = Vector3.up;
-        
-        moveForward *= Time.deltaTime * moveSpeed * Input.GetAxis("Vertical");
-        moveSide *= Time.deltaTime * moveSpeed * Input.GetAxis("Horizontal");
+
+        var moveDir = GetMovementDir();
+        moveForward *= Time.deltaTime * moveSpeed * moveDir.z;
+        moveSide *= Time.deltaTime * moveSpeed * moveDir.x;
         moveVertical *= Time.deltaTime * moveSpeed * GetVerticalMovement();
         return moveForward + moveSide + moveVertical;
     }
 
+    Vector3 GetMovementDir()
+    {
+        var result = Vector3.zero;
+        
+        result.x += joystick.Horizontal;
+        result.z += joystick.Vertical;
+        
+        result.x += Input.GetAxis("Horizontal");
+        result.z += Input.GetAxis("Vertical");
+        
+        return result;
+    }
+    
     private float GetVerticalMovement()
     {
         if (Input.GetKey(KeyCode.LeftShift))

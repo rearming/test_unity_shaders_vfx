@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 public class TestPlaceCracks : MonoBehaviour
@@ -17,12 +18,14 @@ public class TestPlaceCracks : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown((int) MouseButton.LeftMouse))
-        {
-            var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out var raycastHit))
-                cracksPlacer.Place(raycastHit.point);
-                
-        }
+        if (Input.GetMouseButtonUp((int)MouseButton.LeftMouse))
+            PlaceCracks(Input.mousePosition);
+    }
+
+    private void PlaceCracks(Vector3 position)
+    {
+        var ray = mainCamera.ScreenPointToRay(position);
+        if (Physics.Raycast(ray, out var raycastHit))
+            cracksPlacer.Place(raycastHit.point);
     }
 }

@@ -1,7 +1,8 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using UnityEngine;
 
-namespace EditorScripts
+namespace EditorCustomScripts
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property |
                     AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
@@ -11,13 +12,13 @@ namespace EditorScripts
         public string ConditionalSourceField = "";
         //TRUE = Hide in inspector / FALSE = Disable in inspector 
         public bool HideInInspector = false;
- 
+
         public ConditionalHideAttribute(string conditionalSourceField)
         {
             ConditionalSourceField = conditionalSourceField;
             HideInInspector = false;
         }
- 
+
         public ConditionalHideAttribute(string conditionalSourceField, bool hideInInspector)
         {
             ConditionalSourceField = conditionalSourceField;
@@ -25,4 +26,4 @@ namespace EditorScripts
         }
     }
 }
-
+#endif

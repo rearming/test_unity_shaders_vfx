@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    private static ObjectPool _instance;
-
-    public static ObjectPool Instance => _instance;
+    public static ObjectPool Instance { get; private set; }
 
     private void Awake()
     {
-        _instance = this;
+        Instance = this;
     }
 
     private Dictionary<string, LinkedList<GameObject>> _objects = new Dictionary<string, LinkedList<GameObject>>();
-    public GameObject GetGameObjectFromPool(GameObject prefab)
+    public GameObject Get(GameObject prefab)
     {
         GameObject result;
     
@@ -33,7 +31,7 @@ public class ObjectPool : MonoBehaviour
         return result;
     }
 
-    public void ReturnGameObjectToPool(GameObject gameObj)
+    public void Release(GameObject gameObj)
     {
         gameObj.SetActive(false);
         if (!_objects.ContainsKey(gameObj.name))

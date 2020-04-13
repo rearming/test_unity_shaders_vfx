@@ -1,5 +1,7 @@
 ﻿using System;
-using EditorScripts;
+#if UNITY_EDITOR
+ using EditorCustomScripts;
+#endif
 using UnityEngine;
 
 namespace Settings
@@ -12,7 +14,7 @@ namespace Settings
 		[SerializeField] private float appearSpeed;
 		[Tooltip("In seconds")]
 		[SerializeField] private float disappearSpeed;
-
+		
 		[Tooltip("Time in seconds before disappearance animation start")]
 		[SerializeField] private float timeToDisappear;
 
