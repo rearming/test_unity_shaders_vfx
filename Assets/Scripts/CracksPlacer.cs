@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class CracksPlacer : MonoBehaviour
 {
-    [SerializeField] private GameObject crackPrefab;
+    [SerializeField] private GameObject cracksControllerPrefab;
     
-    public void Place(Vector3 position)
+    public void Place(Vector3 position, Vector3 normal)
     {
-        var crack = ObjectPool.Instance.Get(crackPrefab);
-        crack.transform.position = position + Vector3.up * 0.01f;
+        var crack = ObjectPool.Instance.Get(cracksControllerPrefab);
+        crack.transform.position = position + normal * 0.001f;
+        crack.transform.rotation = Quaternion.LookRotation(-normal);
     }
 }

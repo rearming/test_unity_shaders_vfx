@@ -3,6 +3,7 @@ using System.Collections;
 using GenericScripts;
 using Settings;
 using UnityEngine;
+using UnityEngine.VFX;
 using Random = UnityEngine.Random;
 
 public class CracksController : MonoBehaviour

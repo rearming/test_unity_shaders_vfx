@@ -1,13 +1,9 @@
-﻿using System;
+﻿// #define UNITY_REMOTE
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
-
-namespace MyNamespace
-{
-    
-}
 
 [SelectionBase]
 public class CameraMoving : MonoBehaviour
@@ -19,31 +15,71 @@ public class CameraMoving : MonoBehaviour
 
     private Transform cachedTransform;
 
-    private FloatingJoystick joystick; 
+    private FloatingJoystick joystick;
+    
+    private Vector3 firstPoint;
+    private Vector3 secondPoint;
+    private float xAngle;
+    private float yAngle;
+    private float xAngTemp;
+    private float yAngTemp;
 
+    [SerializeField] private RectTransform ignoredTouchZone;
+    
     void Start()
     {
         joystick = FindObjectOfType<FloatingJoystick>();
         cachedTransform = transform;
-        // Cursor.lockState = CursorLockMode.Locked;
-        // Cursor.visible = false;
+#if UNITY_EDITOR && !UNITY_REMOTE 
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+#endif
     }
     
     void Update()
     {
         cachedTransform.position += GetMovementVector();
-        cachedTransform.localEulerAngles = GetRotation();
+#if UNITY_EDITOR && !UNITY_REMOTE
+        cachedTransform.localEulerAngles = MouseRotation();
+#else
+        TouchRotation();
+#endif
     }
 
-    private Vector3 GetRotation()
+    private void TouchRotation()
+    {
+        if (Input.touchCount > 0)
+        {
+            if (ignoredTouchZone.rect.Contains(Input.GetTouch(0).position))
+                return;
+            //Touch began, save position
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                firstPoint = Input.GetTouch(0).position;
+                xAngTemp = xAngle;
+                yAngTemp = yAngle;
+            }
+            //Move finger by screen
+            if (Input.GetTouch(0).phase == TouchPhase.Moved)
+            {
+                secondPoint = Input.GetTouch(0).position;
+                //Mainly, about rotate camera. For example, for Screen.width rotate on 180 degree
+                xAngle = xAngTemp + (secondPoint.x - firstPoint.x) * 180.0f / Screen.width;
+                yAngle = yAngTemp - (secondPoint.y - firstPoint.y) * 90.0f / Screen.height;
+                //Rotate camera
+                transform.rotation = Quaternion.Euler(yAngle, xAngle, 0.0f);
+            }
+        }
+    }
+    private Vector3 MouseRotation()
     {
         var cameraRotation = cachedTransform.localEulerAngles;
         var rotation = cameraRotation;
 
-        rotation.x -= Input.GetAxis("Vertical") * rotateSensVert; // vertical
+        rotation.x -= Input.GetAxis("Mouse Y") * rotateSensVert; // vertical
         rotation.x = rotation.x > 180 ? rotation.x - 360 : rotation.x;
         rotation.x = Mathf.Clamp(rotation.x, -maxVertAngle, maxVertAngle);
-        rotation.y += Input.GetAxis("Horizontal") * rotateSensHoriz; // horizontal
+        rotation.y += Input.GetAxis("Mouse X") * rotateSensHoriz; // horizontal
         return rotation;
     }
 
@@ -53,6 +89,8 @@ public class CameraMoving : MonoBehaviour
         var moveSide = cachedTransform.right;
         var moveVertical = Vector3.up;
 
+        moveForward.y = 0;
+        moveSide.y = 0;
         var moveDir = GetMovementDir();
         moveForward *= Time.deltaTime * moveSpeed * moveDir.z;
         moveSide *= Time.deltaTime * moveSpeed * moveDir.x;
@@ -64,12 +102,13 @@ public class CameraMoving : MonoBehaviour
     {
         var result = Vector3.zero;
         
-        result.x += joystick.Horizontal;
-        result.z += joystick.Vertical;
-        
+#if UNITY_EDITOR && !UNITY_REMOTE
         result.x += Input.GetAxis("Horizontal");
         result.z += Input.GetAxis("Vertical");
-        
+#else
+        result.x += joystick.Horizontal;
+        result.z += joystick.Vertical;
+#endif
         return result;
     }
     

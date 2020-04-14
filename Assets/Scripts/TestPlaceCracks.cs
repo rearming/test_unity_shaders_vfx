@@ -26,6 +26,6 @@ public class TestPlaceCracks : MonoBehaviour
     {
         var ray = mainCamera.ScreenPointToRay(position);
         if (Physics.Raycast(ray, out var raycastHit))
-            cracksPlacer.Place(raycastHit.point);
+            cracksPlacer.Place(raycastHit.point, raycastHit.normal);
     }
 }
