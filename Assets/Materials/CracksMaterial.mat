@@ -63,12 +63,13 @@ Material:
     - Boolean_FF60AB61: 1
     - Vector1_71166113: 3
     - Vector1_8FC82852: 25
-    - Vector1_A057DEEB: 0
+    - Vector1_A057DEEB: 0.18
     - Vector1_A5544728: 8.59
     - Vector1_B94D8A17: 12.3
     - Vector1_BA5ED79A: 0
-    - Vector1_BF1AE38F: 3.31
+    - Vector1_BF1AE38F: 0
     - Vector1_CF50B7F: -23.39
+    - Vector1_F3580C3D: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
