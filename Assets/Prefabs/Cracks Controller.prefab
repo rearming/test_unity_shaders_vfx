@@ -199,6 +199,9 @@ VisualEffect:
       - m_Value: 0.877543
         m_Name: New ArcCircle_circle_radius
         m_Overridden: 1
+      - m_Value: 0.68044806
+        m_Name: Spawn Shape_circle_radius
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
