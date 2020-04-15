@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7417012995391425103}
   - component: {fileID: 7417012995391425089}
   m_Layer: 0
-  m_Name: Cracks Controller
+  m_Name: CracksLong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7417012995391425100}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 8498006496773762508}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7417012995391425103
 Animator:
   serializedVersion: 3
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b853063f914b0bb255ef067265ce06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 11400000, guid: 843d887eae8da194596fcf464dba8bb3, type: 2}
+  settings: {fileID: 11400000, guid: f766b4fd4db63c94d95b0e275e7bc43d, type: 2}
 --- !u!1 &7417012996383735340
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: be5e619ce40d1394385a55d463f399b1, type: 2}
+  - {fileID: 2100000, guid: 1e66e795dc4e0a740bbc6936b326fcce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -186,7 +186,7 @@ VisualEffect:
   m_GameObject: {fileID: 8187458470631738503}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 9ee3f29d1dbe63b42b460aec20f03c96, type: 3}
-  m_InitialEventName: OnPlay
+  m_InitialEventName: 
   m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
@@ -218,9 +218,15 @@ VisualEffect:
       - m_Value: {x: 0, y: 0, z: -1}
         m_Name: Ground_normal
         m_Overridden: 1
-      - m_Value: {x: -0.03, y: 1, z: 0}
+      - m_Value: {x: 1.8951912, y: -1.0746639, z: -1.6598825}
+        m_Name: Ground_center
+        m_Overridden: 1
+      - m_Value: {x: 38.44555, y: 0.7548604, z: 42.907722}
+        m_Name: Ground_size
+        m_Overridden: 1
+      - m_Value: {x: 0, y: -1, z: 0}
         m_Name: Normal
-        m_Overridden: 0
+        m_Overridden: 1
     m_Vector4f:
       m_Array: []
     m_Uint:
@@ -232,7 +238,38 @@ VisualEffect:
     m_AnimationCurve:
       m_Array: []
     m_Gradient:
-      m_Array: []
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0.29806662, g: 2.1989527, b: 0.062827215, a: 1}
+          key1: {r: 0.30745322, g: 0, b: 0.94509804, a: 1}
+          key2: {r: 0.30745322, g: 0, b: 0.94509804, a: 0}
+          key3: {r: 0, g: 0, b: 0, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 6250
+          ctime1: 36556
+          ctime2: 56443
+          ctime3: 0
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 5682
+          atime1: 57769
+          atime2: 65535
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_NumColorKeys: 2
+          m_NumAlphaKeys: 3
+        m_Name: Color over life
+        m_Overridden: 1
     m_NamedObject:
       m_Array: []
     m_Bool:

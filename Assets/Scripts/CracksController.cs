@@ -13,6 +13,7 @@ public class CracksController : MonoBehaviour
 	private bool appeared;
 	
 	private new Renderer renderer;
+	private VisualEffect cachedVfx;
 	
 	private static readonly int SeedFieldId = Shader.PropertyToID("Vector1_8FC82852");
 	private static readonly int AppearBoolId = Animator.StringToHash("Appear");
@@ -33,14 +34,30 @@ public class CracksController : MonoBehaviour
 		if (animator != null)
 			Appear();
 	}
-	
+
+	private Vector3 vec;
 	private void Appear()
 	{
 		var rotation = transform.rotation.eulerAngles;
-		transform.localEulerAngles = new Vector3(rotation.x, rotation.y, Random.rotation.eulerAngles.y);
+		if (cachedVfx == null)
+			cachedVfx = GetComponentInChildren<VisualEffect>();
+
+		transform.localEulerAngles = new Vector3(rotation.x, rotation.y, Random.Range(0, 180));
+		cachedVfx.SetVector3("Gravity Vector", transform.InverseTransformDirection(Vector3.down));
 		renderer.material.SetFloat(SeedFieldId, Random.Range(0, 10000));
 		animator.SetBool(AppearBoolId, true);
 		StartCoroutine(nameof(DelayedDisappear));
+	}
+
+	private void Update()
+	{
+		Debug.DrawRay(transform.position, vec * 10, Color.green);
+		Debug.DrawRay(transform.position * 1.1f, transform.TransformDirection(vec) * 10, Color.red);
+	}
+
+	private void PlayVFX()
+	{
+		cachedVfx.Play();
 	}
 
 	private IEnumerator DelayedDisappear()

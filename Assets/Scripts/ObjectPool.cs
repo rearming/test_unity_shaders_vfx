@@ -23,7 +23,6 @@ public class ObjectPool : MonoBehaviour
         {
             result = _objects[prefab.name].First.Value;
             _objects[prefab.name].RemoveFirst();
-            result.SetActive(true);
             return result;
         }
         result = Instantiate(prefab);

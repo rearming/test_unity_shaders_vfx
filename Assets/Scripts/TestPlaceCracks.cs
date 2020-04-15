@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class TestPlaceCracks : MonoBehaviour
 {
     private Camera mainCamera;
     private CracksPlacer cracksPlacer;
+    
+    [SerializeField] private GameObject[] crackPrefabs;
 
     private void Start()
     {
@@ -26,6 +29,8 @@ public class TestPlaceCracks : MonoBehaviour
     {
         var ray = mainCamera.ScreenPointToRay(position);
         if (Physics.Raycast(ray, out var raycastHit))
-            cracksPlacer.Place(raycastHit.point, raycastHit.normal);
+            cracksPlacer.Place(
+                crackPrefabs[Random.Range(0, crackPrefabs.Length)],
+                raycastHit.point, raycastHit.normal);
     }
 }
