@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DissolveDistance
+  m_Name: DissolveDistanceSphere
   m_Shader: {fileID: -6465566751694194690, guid: 61d21b82c47427749818fdce087fbead,
     type: 3}
   m_ShaderKeywords: 
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_A64F6655:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 9582520a7050c204489e6e99ffb1b65e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -29,12 +29,12 @@ Material:
     - Boolean_F10F4981: 0
     - Vector1_23366A52: 5
     - Vector1_4B9F34E9: 0.02
-    - Vector1_827C5C83: 50
-    - Vector1_C1E7AEC9: 2
+    - Vector1_827C5C83: 100
+    - Vector1_C1E7AEC9: 0.2
     - Vector1_D8D29DAE: 0.84
     m_Colors:
-    - Color_177C6DF: {r: 0.51886785, g: 0.47726053, b: 0.47726053, a: 1}
-    - Color_AF2A6BE4: {r: 3.94663, g: 3.443993, b: 3.443993, a: 1}
+    - Color_177C6DF: {r: 0.078631185, g: 0.10661898, b: 0.1792453, a: 1}
+    - Color_AF2A6BE4: {r: 2.8267288, g: 0, b: 0, a: 1}
 --- !u!114 &4018481952770258523
 MonoBehaviour:
   m_ObjectHideFlags: 11
