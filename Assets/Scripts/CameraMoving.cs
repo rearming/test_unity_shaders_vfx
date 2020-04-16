@@ -52,21 +52,17 @@ public class CameraMoving : MonoBehaviour
         {
             if (ignoredTouchZone.rect.Contains(Input.GetTouch(0).position))
                 return;
-            //Touch began, save position
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 firstPoint = Input.GetTouch(0).position;
                 xAngTemp = xAngle;
                 yAngTemp = yAngle;
             }
-            //Move finger by screen
             if (Input.GetTouch(0).phase == TouchPhase.Moved)
             {
                 secondPoint = Input.GetTouch(0).position;
-                //Mainly, about rotate camera. For example, for Screen.width rotate on 180 degree
                 xAngle = xAngTemp + (secondPoint.x - firstPoint.x) * 180.0f / Screen.width;
                 yAngle = yAngTemp - (secondPoint.y - firstPoint.y) * 90.0f / Screen.height;
-                //Rotate camera
                 transform.rotation = Quaternion.Euler(yAngle, xAngle, 0.0f);
             }
         }

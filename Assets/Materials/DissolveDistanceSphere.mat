@@ -27,14 +27,14 @@ Material:
     m_Floats:
     - Boolean_9CB6CDDE: 0
     - Boolean_F10F4981: 0
-    - Vector1_23366A52: 5
-    - Vector1_4B9F34E9: 0.02
-    - Vector1_827C5C83: 100
-    - Vector1_C1E7AEC9: 0.2
+    - Vector1_23366A52: 6
+    - Vector1_4B9F34E9: 0.0117
+    - Vector1_827C5C83: 300
+    - Vector1_C1E7AEC9: 1
     - Vector1_D8D29DAE: 0.84
     m_Colors:
     - Color_177C6DF: {r: 0.078631185, g: 0.10661898, b: 0.1792453, a: 1}
-    - Color_AF2A6BE4: {r: 2.8267288, g: 0, b: 0, a: 1}
+    - Color_AF2A6BE4: {r: 6.4222345, g: 0, b: 0, a: 1}
 --- !u!114 &4018481952770258523
 MonoBehaviour:
   m_ObjectHideFlags: 11
