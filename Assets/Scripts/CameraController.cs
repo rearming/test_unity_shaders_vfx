@@ -4,9 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
+using UnityEngine.XR;
 
 [SelectionBase]
-public class CameraMoving : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotateSensHoriz;
@@ -50,17 +51,23 @@ public class CameraMoving : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
+            var touchIndex = 0;
             if (ignoredTouchZone.rect.Contains(Input.GetTouch(0).position))
-                return;
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                firstPoint = Input.GetTouch(0).position;
+                if (Input.touchCount > 1)
+                    touchIndex = 1;
+                else
+                    return;
+            }
+            if (Input.GetTouch(touchIndex).phase == TouchPhase.Began)
+            {
+                firstPoint = Input.GetTouch(touchIndex).position;
                 xAngTemp = xAngle;
                 yAngTemp = yAngle;
             }
-            if (Input.GetTouch(0).phase == TouchPhase.Moved)
+            if (Input.GetTouch(touchIndex).phase == TouchPhase.Moved)
             {
-                secondPoint = Input.GetTouch(0).position;
+                secondPoint = Input.GetTouch(touchIndex).position;
                 xAngle = xAngTemp + (secondPoint.x - firstPoint.x) * 180.0f / Screen.width;
                 yAngle = yAngTemp - (secondPoint.y - firstPoint.y) * 90.0f / Screen.height;
                 transform.rotation = Quaternion.Euler(yAngle, xAngle, 0.0f);

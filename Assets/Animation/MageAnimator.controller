@@ -21,12 +21,25 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ecf1c9844e13bbe48a8729667efdc143, type: 3}
+  m_Motion: {fileID: 7400000, guid: 67e2616e8194f974ea9286b55d62a1eb, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-8455725803557993995
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c54c136678ad3b943b980ddbff2634a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shooter: {fileID: 0}
 --- !u!1107 &-5179814983168880641
 AnimatorStateMachine:
   serializedVersion: 5
@@ -38,7 +51,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -8939934367107302824}
-    m_Position: {x: 390, y: 40, z: 0}
+    m_Position: {x: 390, y: 70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3633160585558359358}
     m_Position: {x: 390, y: 180, z: 0}
@@ -115,7 +128,7 @@ AnimatorController:
     m_DefaultFloat: 10
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer

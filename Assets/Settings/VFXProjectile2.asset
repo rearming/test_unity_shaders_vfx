@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2e8342095e41119e1904d32a07d5f1, type: 3}
+  m_Name: VFXProjectile2
+  m_EditorClassIdentifier: 
+  speed: 7
+  timeBeforeDisable: 4
+  colorOverLife:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 0}
+    key1: {r: 0.023775946, g: 0, b: 3.495064, a: 1}
+    key2: {r: 0.15449657, g: 3.9782863, b: 7.3772106, a: 1}
+    key3: {r: 0.10699176, g: 1.0936935, b: 0.2615354, a: 0}
+    key4: {r: 1, g: 1, b: 1, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 10039
+    ctime2: 30305
+    ctime3: 52655
+    ctime4: 65535
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 5493
+    atime2: 43374
+    atime3: 65535
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 5
+    m_NumAlphaKeys: 4
+  vfxAsset: {fileID: 8926484042661614526, guid: b5952ed16a809e447b073240dc33fec7,
+    type: 3}
+  cracksAfterHit: {fileID: 7417012995391425100, guid: 6d7785507d6d78749b2cc3f8fcdd956c,
+    type: 3}

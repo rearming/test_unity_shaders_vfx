@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CracksLong
   m_EditorClassIdentifier: 
   appearSpeed: 3
-  disappearSpeed: 6
-  timeToDisappear: 20
+  disappearSpeed: 4
+  timeToDisappear: 8

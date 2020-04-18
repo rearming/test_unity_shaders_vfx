@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appearSpeed: 2
   disappearSpeed: 4
-  timeToDisappear: 6
+  timeToDisappear: 3
