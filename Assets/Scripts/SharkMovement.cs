@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Xml;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Debug = UnityEngine.Debug;
 
 public class SharkMovement : MonoBehaviour
@@ -18,7 +14,7 @@ public class SharkMovement : MonoBehaviour
 	
 	[SerializeField] private GameObject pointsContainer;
 	[SerializeField] private Transform[] points;
-	
+
 	private Vector3[] pointsPositions;
 	private float[] pointsDistances;
 	private int currentPointIndex;
@@ -61,7 +57,6 @@ public class SharkMovement : MonoBehaviour
 
 		var targetRot = Quaternion.LookRotation(transform.position - prevPos);
 		
-		// Debug.Log(lerpT.ToString());
 		transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, moveLerpT);
 
 		moveLerpT += fixedMoveSpeed * moveStepSize;
@@ -70,7 +65,9 @@ public class SharkMovement : MonoBehaviour
 	private Vector3 GetBezierMiddlePoint(Vector3 prevPos, Vector3 targetPos)
 	{
 		var halfVec = (targetPos - prevPos) / 2 + prevPos;
-		return halfVec + halfVec.normalized * bezierCurveHeight;
+		var extensionVec = halfVec.normalized * bezierCurveHeight;
+		extensionVec.y = 0;
+		return halfVec + extensionVec;
 	}
 	
 	private Vector3 GetPointOnBezierCurve(Vector3 current, Vector3 target, Vector3 offset, float t)
